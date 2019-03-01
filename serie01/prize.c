@@ -8,7 +8,7 @@ int main()
     scanf("%lf", &x);
     printf("enter number of friends\n");
     scanf("%d", &n);
-    printf("everybody %lf \n", (double) x/(n+1));
+    printf("everybody gets %lf euro \n", (double) x/(n+1));
     return 0;
   }
 
