@@ -11,7 +11,7 @@ int main()
         printf("you didn't enter a number\n");
         return 1;
       }
-    printf("the circumference is  %lf units \n", 2.0*r*4.0*atan(1.0));
+    printf("the circumference is  %lf units \n", fabs(2.0*r*4.0*atan(1.0)));
     printf("the area is  %lf units \n", pow(r,2)*4.0*atan(1.0));
     return 0;
   }
