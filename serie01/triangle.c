@@ -27,13 +27,15 @@ int main()
 		  if(c>a) swap(&c, &a);
 		  if(c>b) swap(&b, &c);
 
-		  if(b+c==a) printf("triangle is one-dimensional degenerate\n");
-		  else normalchecks(&a, &b, &c);
 		  
-		  if(b+c<a) printf("triangle has impossible dimensions\n");
+		  if(b+c<=a)
+                    {
+                      if(b+c<a) printf("triangle has impossible dimensions\n");
+                      else printf("triangle is one-dimensional degenerate\n");
+                    }
 		  else
                     {
-	              if(pow((int) a,2)+pow((int) b,2)==pow((int) c,2)) printf("triangle is right-angled\n");
+	              if(pow((int) c,2)+pow((int) b,2)==pow((int)a,2)) printf("triangle is right-angled\n");
                       else normalchecks(&a, &b, &c);
                     }
                 }
