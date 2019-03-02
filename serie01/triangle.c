@@ -31,7 +31,11 @@ int main()
 		  else normalchecks(&a, &b, &c);
 		  
 		  if(b+c<a) printf("triangle has impossible dimensions\n");
-		  else normalchecks(&a, &b, &c);
+		  else
+                    {
+	              if(pow((int) a,2)+pow((int) b,2)==pow((int) c,2)) printf("triangle is right-angled\n");
+                      else normalchecks(&a, &b, &c);
+                    }
                 }
               else
                 {
@@ -64,13 +68,9 @@ void swap(double *x, double *y)
 void normalchecks(double *x, double *y, double *z)
   {
     if(a!=b && b!=c && c!=a) printf("triangle is scalene\n"); 
-      else 
-        {
-	  if(pow(a,2)+pow(b,2)==pow(c,2)) printf("triangle is right-angled\n");
-          else
-	    {	  
-	      if(a==b || b==c) printf("triangle is isosceles\n");
-              else if(a==b && b==c) printf("triangle is equilateral\n");
-            }			
-        }
+      else
+	{	  
+          if(a==b || b==c) printf("triangle is isosceles\n");
+          else if(a==b && b==c) printf("triangle is equilateral\n");
+        }			
   }	    
