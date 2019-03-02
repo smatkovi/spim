@@ -4,9 +4,17 @@ int main()
   {
     double a,b;
     printf("enter length a of rectangle\n");
-    scanf("%lf", &a);
+    if(scanf("%lf", &a)!=1)
+      {
+        printf("you didn't enter a number\n");
+        return 1;
+      }
     printf("enter width b of rectangle\n");
-    scanf("%lf", &b);
+    if(scanf("%lf", &b)!=1)
+      {
+        printf("you didn't enter a number\n");
+        return 1;
+      }
     printf("The area of the rectangle is %lf units\n", a*b);
     return 0;
   }
