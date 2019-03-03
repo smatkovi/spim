@@ -72,7 +72,7 @@ void normalchecks(double *x, double *y, double *z)
     if(a!=b && b!=c && c!=a) printf("triangle is scalene\n"); 
       else
 	{	  
-          if(a==b || b==c) printf("triangle is isosceles\n");
-          else if(a==b && b==c) printf("triangle is equilateral\n");
+          if(a==b && b==c && c==a) printf("triangle is equilateral\n");
+          else if(a==b || b==c) printf("triangle is isosceles\n");
         }			
   }	    
