@@ -1,0 +1,1 @@
+for f in *.c; do make CFLAGS='-Wall -g -lm' ${f%.c}; done
