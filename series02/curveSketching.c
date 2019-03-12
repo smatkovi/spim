@@ -12,7 +12,7 @@ int main()
             scanf("%lf", &c);
 
                     printf("function crosses y axis at (0, %lf) \n", c);
-                    if(pow(b, 2)>=4.*a*c) printf("function crosses x axis at (%lf, 0) and  (%lf, 0) \n", (-b+sqrt(pow(b, 2)-4.*a*c)/(2.*a)), (-b-sqrt(pow(b, 2)-4.*a*c)/(2.*a));
+                    if(pow(b, 2)>=4.*a*c) printf("function crosses x axis at (%lf, 0) and  (%lf, 0) \n", (-b+sqrt(pow(b, 2)-4.*a*c)/(2.*a)), (-b-sqrt(pow(b, 2)-4.*a*c)/(2.*a)));
     return 0;
   }
 
