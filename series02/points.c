@@ -39,12 +39,11 @@ int main()
         printf("you didn't enter a number\n");
         return 1;
       }
-    printf("The area of the rectangle is %lf units\n", a*b);
-    printf("The area of the rectangle is %lf units\n", a*b);
-    printf("The area of the rectangle is %lf units\n", a*b);
-    printf("The area of the rectangle is %lf units\n", a*b);
-    printf("The area of the rectangle is %lf units\n", a*b);
-    printf("The area of the rectangle is %lf units\n", a*b);
+
+    a-=u;
+    b-=v;
+    if(x*b==y*a) printf("points are on one line\n");
+    else printf("points are not on one line\n");
     return 0;
   }
 
