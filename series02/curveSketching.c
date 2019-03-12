@@ -13,6 +13,10 @@ int main()
 
                     printf("function crosses y axis at (0, %lf) \n", c);
                     if(pow(b, 2)>=4.*a*c) printf("function crosses x axis at (%lf, 0) and  (%lf, 0) \n", (-b+sqrt(pow(b, 2)-4.*a*c)/(2.*a)), (-b-sqrt(pow(b, 2)-4.*a*c)/(2.*a)));
+     
+    if(a==0 && b==0) printf("function is linear\n");
+    else if(b==0) printf("function is parabola\n");
+    else printf("function is a general squared function\n");
     return 0;
   }
 
