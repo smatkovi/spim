@@ -27,4 +27,14 @@ int main()
 
 normaltest(x, y)
   {
+    if(x>0)
+      {
+        if(b>0) printf("first quadrant\n");
+        else printf("fourth quadrant\n");
+      }
+    else
+      {
+        if(b>0) printf("second quadrant\n");
+        else printf("third quadrant\n");
+      }
   }
