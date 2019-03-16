@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-double scalaraproduct(double x[3], double y[3])
+double scalarProduct(double x[3], double y[3])
   {
     return x[0]*y[0] + x[1]*y[1] + x[2]*y[2];
   }
@@ -46,7 +46,7 @@ int main()
         return 1;
       }
     
-    printf("scalarproduct of u_i*v_j=%e\n", scalarProduct(&u, &v));
+    printf("scalarproduct of u_i*v_j=%f\n", scalarProduct(u, v));
     return 0;
   }
 
