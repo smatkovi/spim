@@ -1,6 +1,15 @@
 #include<stdio.h>
 #include<math.h>
 int i=0;
+
+int factorial(int x)
+  {
+    int s=1;
+    for(i=0; i<x; i++) s*=i+1;
+    return s;
+  }
+
+int main()
   {
     int n,k;
     double temp;
@@ -14,7 +23,7 @@ int i=0;
       k = (int) temp;
       if(k==temp && k>=0)
         {
-          
+          printf("n!=%i k!=%i\n", factorial(n), factorial(k));
         }
       else
         {
