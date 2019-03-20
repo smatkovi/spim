@@ -24,12 +24,13 @@ int check(int x[10], int y[3])
   }
 int main()
   {
-    int n[10], m;
+    int m;
     
     double temp;
     printf("enter n greater or equal to 0\n");
     scanf("%lf", &temp);
     m = (int) temp;
+    int n[m];
     if(m==temp && m>=0)
       {
         while(i<m)
