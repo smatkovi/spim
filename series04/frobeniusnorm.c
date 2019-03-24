@@ -2,7 +2,7 @@
 #include<math.h>
 int i, j;
 int dimm, dimn;
-double frobeniusNorm(double a[]int rows, int columns);
+double frobeniusNorm(double a[], int rows, int columns);
 double n[];
 
 int main()
@@ -33,27 +33,27 @@ int main()
           }
         else
           {
-            printf("you didn't enter an integer , an integer greater than 0\n");
+            printf("you didn't enter  an integer greater than 0\n");
             return 1;
           }
       }
     else
       {
-        printf("you didn't enter an integer , an integer greater than 0\n");
+        printf("you didn't enter  an integer greater than 0\n");
         return 1;
       }
-    printf("frobeniusnorm of matrix: %f\n", frobeniusNorm(dimm, dimn));
+    printf("frobeniusnorm of matrix: %f\n", frobeniusNorm(n, dimm, dimn));
     return 0;
   }
 
-double frobeniusNorm(int rows, int columns)
+double frobeniusNorm(double a[], int rows, int columns)
   {
     double s=0;
     for(i=0; i<rows; i++)
       {
 	for(j=0; j<columns; j++)
 	  {
-	    s+=n[i][j]*n[i][j];
+	    s+= a[i*j] * a[i*j];
 	  }
       }
     s=sqrt(s);
