@@ -3,7 +3,6 @@
 int i, j;
 int dimm, dimn;
 double frobeniusNorm(double a[], int rows, int columns);
-double n[];
 
 int main()
   {
@@ -20,6 +19,7 @@ int main()
 
         if(dimn==temp && dimn>=0 && dimn<=100)
           {
+            double n[dimm*dimn];
             for(i=1; i<=dimm; i++)
               {
                 for(j=1; j<=dimn; j++)
@@ -29,7 +29,8 @@ int main()
                     scanf("%lf", &temp);
                     n[i*j] = temp;
                   }
-	     }
+	      }
+            printf("frobeniusnorm of matrix: %f\n", frobeniusNorm(n, dimm, dimn));
           }
         else
           {
@@ -42,16 +43,15 @@ int main()
         printf("you didn't enter  an integer greater than 0\n");
         return 1;
       }
-    printf("frobeniusnorm of matrix: %f\n", frobeniusNorm(n, dimm, dimn));
     return 0;
   }
 
 double frobeniusNorm(double a[], int rows, int columns)
   {
     double s=0;
-    for(i=0; i<rows; i++)
+    for(i=1; i<=rows; i++)
       {
-	for(j=0; j<columns; j++)
+	for(j=1; j<=columns; j++)
 	  {
 	    s+= a[i*j] * a[i*j];
 	  }
