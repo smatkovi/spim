@@ -1,45 +1,45 @@
 #include<stdio.h>
 #include<math.h>
 int i, j;
-int dimm=101, dimn=101;
-double frobeniusNorm(int rows, int columns);
-double n[100][100];
+int dimm, dimn;
+double frobeniusNorm(double a[]int rows, int columns);
+double n[];
 
 int main()
   {
     
     double temp;
-    printf("enter m between 1 and 100\n");
+    printf("enter m , an integer greater than 0\n");
     scanf("%lf", &temp);
     dimm = (int) temp;
     if(dimm==temp && dimm>=0 && dimm<=100)
       {
-        printf("enter n between 1 and 100\n");
+        printf("enter n , an integer greater than 0\n");
         scanf("%lf", &temp);
         dimn = (int) temp;
 
         if(dimn==temp && dimn>=0 && dimn<=100)
           {
-            for(i=0; i<dimm; i++)
+            for(i=1; i<=dimm; i++)
               {
-                for(j=0; j<dimn; j++)
+                for(j=1; j<=dimn; j++)
                   {
                     double temp;
                     printf("enter row %i, column %i of %i rows and %i columns\n", i+1, j+1, dimm, dimn);
                     scanf("%lf", &temp);
-                    n[i][j] = temp;
+                    n[i*j] = temp;
                   }
 	     }
           }
         else
           {
-            printf("you didn't enter an integer between 1 and 100\n");
+            printf("you didn't enter an integer , an integer greater than 0\n");
             return 1;
           }
       }
     else
       {
-        printf("you didn't enter an integer between 1 and 100\n");
+        printf("you didn't enter an integer , an integer greater than 0\n");
         return 1;
       }
     printf("frobeniusnorm of matrix: %f\n", frobeniusNorm(dimm, dimn));
