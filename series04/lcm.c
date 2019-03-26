@@ -24,18 +24,26 @@ int main()
 
 int lcm(int a, int b)
   {
-    int c=a, d=b, temp;
+    int c=a, d=b, anew=a, bnew=b;
     if(b>a)
       {
-        a=d;
-        b=c;
+        anew=d;
+        bnew=c;
       }
-    while(a>1)
+    while(b>1)
       {
-        while(a%b==0) a/=b;
-        temp=a;
-        a=b;
-        b=temp;
+        a=anew;
+        b=bnew;
+        if(a%b==0)
+          {
+             anew=a/b;
+             bnew=a;
+          }
+        else
+          {
+            anew=a%b;
+            bnew=a;
+          }
       }
     return c*d/a;
   }
