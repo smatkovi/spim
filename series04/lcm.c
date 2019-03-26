@@ -25,25 +25,31 @@ int main()
 int lcm(int a, int b)
   {
     int c=a, d=b, anew=a, bnew=b;
-    if(b>a)
+    while(anew>1)
       {
-        anew=d;
-        bnew=c;
-      }
-    while(b>1)
-      {
-        a=anew;
-        b=bnew;
+        if(bnew>anew)
+          {
+            a=anew;
+            b=bnew;
+          }
+        else
+          {
+            a=bnew;
+            b=anew;
+          }
         if(a%b==0)
           {
              anew=a/b;
              bnew=a;
+             printf("if\n");
           }
         else
           {
-            anew=a%b;
-            bnew=a;
+            bnew=a%b;
+            anew=a;
+             printf("else\n");
           }
+        printf("a=%i b=%i\n", anew, bnew);
       }
-    return c*d/a;
+    return c*d/bnew;
   }
