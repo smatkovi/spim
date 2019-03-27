@@ -14,22 +14,18 @@ int main()
     double p=1./2.;
     while(p/2.>0) p/=2.;
     printf("current smallest possible precision %e\n", p);
-    printf("the cubicroot is  %lf\n", cubeRoot(r, 0.00000001));
+    printf("the cubicroot is  %lf\n", cubeRoot(r, 1e-10));
+    printf("difference to cbrt is %e\n", fabs(cubeRoot(r, 1e-10) - cbrt(r)));
     return 0;
   }
 
 double cubeRoot(double x, double precision)
   {
     double c=1.;
-    if(x>1) c=x/3.;
-    if(x<1) c=1.;
-    if(x==1.) return c;
-    else
-      {
-        while(c*c*c-x > precision)
+        while(fabs(((2.*c+x/(c*c))/3.)*((2.*c+x/(c*c))/3.)*(2.*c+x/(c*c))/3. - x) > precision)
           {
-            c-=precision;
+            c=(2.*c+x/(c*c))/3.;
+	    printf("%f\n", c);
           }
         return c;
-      }
   }
