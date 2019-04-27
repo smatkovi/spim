@@ -1,4 +1,7 @@
 #include <cmath>
+#include <iostream>
+using std::cout;
+using std::endl;
 
 class Triangle 
 {
@@ -17,6 +20,11 @@ class Triangle
 };
 int main()
 {
+	Triangle t;
+	t.setX(0, 0);
+	t.setY(3, 0);
+	t.setZ(3, 3);
+	cout << "A=%f, P=%f, lateral=%i\n" << t.getArea() << endl << t.getPerimeter() << endl << t.isEquilateral() << endl;
 	return 0;
 }
 	
@@ -50,5 +58,6 @@ double Triangle::getPerimeter()
 
 bool Triangle::isEquilateral()
 {
-	return 1;
+	if( fabs( pow(y[0]-x[0], 2) + pow(y[1]-x[1], 2)) == fabs( pow(z[0]-x[0], 2) + pow(z[1]-x[1], 2)) || fabs(pow(z[0]-x[0], 2) + pow(z[1]-x[1], 2)) == fabs( pow(y[0]-z[0], 2) + pow(y[1]-z[1], 2))) return 1;
+	else return 0;
 }
