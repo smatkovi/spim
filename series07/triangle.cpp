@@ -53,11 +53,11 @@ double Triangle::getArea()
 
 double Triangle::getPerimeter() 
 {
-	return fabs( pow(y[0]-x[0], 2) + pow(y[1]-x[1], 2)) + fabs( pow(z[0]-x[0], 2) + pow(z[1]-x[1], 2)) + fabs( pow(y[0]-z[0], 2) + pow(y[1]-z[1], 2)); 
+	return sqrt( pow(y[0]-x[0], 2) + pow(y[1]-x[1], 2)) + sqrt( pow(z[0]-x[0], 2) + pow(z[1]-x[1], 2)) + sqrt( pow(y[0]-z[0], 2) + pow(y[1]-z[1], 2)); 
 }
 
 bool Triangle::isEquilateral()
 {
-	if( fabs( pow(y[0]-x[0], 2) + pow(y[1]-x[1], 2)) == fabs( pow(z[0]-x[0], 2) + pow(z[1]-x[1], 2)) || fabs(pow(z[0]-x[0], 2) + pow(z[1]-x[1], 2)) == fabs( pow(y[0]-z[0], 2) + pow(y[1]-z[1], 2))) return 1;
+	if( fabs(sqrt( pow(y[0]-x[0], 2) + pow(y[1]-x[1], 2)) - sqrt( pow(z[0]-x[0], 2) + pow(z[1]-x[1], 2))) < 1e-5 || fabs(sqrt(pow(z[0]-x[0], 2) + pow(z[1]-x[1], 2)) - sqrt( pow(y[0]-z[0], 2) + pow(y[1]-z[1], 2))) < 1e-5) return 1;
 	else return 0;
 }
