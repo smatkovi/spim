@@ -14,6 +14,7 @@ class Name
 
 	public:
 	void setName(char*);
+	void printName();
 };
 
 int main()
@@ -61,3 +62,9 @@ void Name::setName(char* u)
 }
 
 
+void Name::printName()
+{
+	char u[strlen(name)];
+	int i=0;
+	while(name[i]!=' ')
+}
