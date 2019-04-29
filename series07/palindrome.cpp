@@ -10,7 +10,7 @@ int main()
 
     char str1[20], str2[20];
 
-    int i, j, len = 0, flag = 0;
+    int i, j, len = 0, isPal = 0;
 
     cout << "Enter the string : ";
 
@@ -24,9 +24,9 @@ int main()
 
     if (strcmp(str1, str2))
 
-        flag = 1;
+        isPal = 1;
 
-    if (flag == 1)
+    if (isPal == 1)
 
         cout << str1 << " is not a palindrome";
 
