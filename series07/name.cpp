@@ -6,19 +6,14 @@ using std::cout;
 using std::endl;
 using std::abs;
 
-class University 
+class Name 
 {
 	private:
-	char city[];
-	char university[];
-	int num_students;
+	char first_name[];
+	char surname[];
 
 	public:
-	void setUniversity(char*);
-	void setCity(char*);
-	void setNum_students(int);
-	void graduate();
-	void newStudent();
+	void setName(char*);
 };
 
 int main()
@@ -26,34 +21,43 @@ int main()
 	return 0;
 }
 
-void University::setUniversity(char* u)
+void Name::setName(char* u)
 {
-	for(int i=0; abs(i)<strlen(u); i++)
+	int i=0, j=0, k=0, ws=0, a=0;//ws: #(whitspaces)
+	while(u[i]!=' ')i++;
+	ws++;
+	while(u[i+j]!=' ')j++;
+	if(strlen(u)>abs(i+j+1))
 	{
-		university[i]=u[i];
+		ws++;
+		while(u[k]!=' ')k++;
+	}
+	assert(ws<3);
+	for(a=0; a<i; a++)
+	{
+		first_name[a]=u[a];
+	}
+	if(ws==1)
+	{
+		for(a=0; a<j; a++)
+		{
+			surname[a]=u[i+a];
+		}
+		
+	}
+	else
+	{
+		first_name[i]=' ';
+		for(a=0; a<j; a++)
+		{
+			first_name[i+a]=u[i+a];
+		}
+
+		for(a=0; a<k; a++)
+		{
+			surname[a]=u[i+j+a];
+		}
 	}
 }
 
-void University::setCity(char* u)
-{
-	for(int i=0; abs(i)<strlen(u); i++)
-	{
-		city[i]=u[i];
-	}
-}
-	
-void University::setNum_students(int n)
-{
-	num_students=n;
-}
 
-void University::newStudent()
-{
-	num_students++;
-}
-
-void University::graduate()
-{
-	num_students--;
-	assert(num_students>=0);
-}
