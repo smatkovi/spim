@@ -1,5 +1,6 @@
 #include <cmath>
 #include <iostream>
+#include <assert.h>
 using std::cout;
 using std::endl;
 
@@ -24,7 +25,7 @@ int main()
 	
 void setUniversity(char u[])
 {
-	for(int i=0; i<len(u-1); i++)
+	for(int i=0; i<strlen(u)-1; i++)
 	{
 		university[i]=u[i];
 	}
@@ -36,4 +37,14 @@ void setCity(char u[])
 void setNum_students(int n)
 {
 	num_students=n;
+}
+void newStudent()
+{
+	num_students++;
+}
+
+void graduate()
+{
+	num_students--;
+	assert(num_students>=0);
 }
