@@ -1,10 +1,12 @@
 #include <cmath>
 #include <iostream>
 #include <assert.h>
+#include <string.h>
 using std::cout;
 using std::endl;
+using std::abs;
 
-class Triangle 
+class University 
 {
 	private:
 	char city[];
@@ -12,38 +14,45 @@ class Triangle
 	int num_students;
 
 	public:
-	void setCity(char);
-	void setUniversity(char);
+	void setUniversity(char*);
+	void setCity(char*);
 	void setNum_students(int);
 	void graduate();
 	void newStudent();
 };
+
 int main()
 {
 	return 0;
 }
-	
-void setUniversity(char u[])
+
+void University::setUniversity(char* u)
 {
-	for(int i=0; i<strlen(u)-1; i++)
+	for(int i=0; abs(i)<strlen(u); i++)
 	{
 		university[i]=u[i];
 	}
 }
-void setCity(char u[])
+
+void University::setCity(char* u)
 {
-	city=u;
+	for(int i=0; abs(i)<strlen(u); i++)
+	{
+		city[i]=u[i];
+	}
 }
-void setNum_students(int n)
+	
+void University::setNum_students(int n)
 {
 	num_students=n;
 }
-void newStudent()
+
+void University::newStudent()
 {
 	num_students++;
 }
 
-void graduate()
+void University::graduate()
 {
 	num_students--;
 	assert(num_students>=0);
