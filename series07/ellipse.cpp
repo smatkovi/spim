@@ -4,6 +4,7 @@
 using std::cout;
 using std::endl;
 using std::min;
+using std::max;
 
 class Ellipse 
 {
@@ -17,15 +18,10 @@ class Ellipse
 	double getEccentricity();
 	void printFocalPoints();
 	bool isCircle();
-	bool isInside(double f, double s);
+	bool isInside(double, double);
 };
 int main()
 {
-	Ellipse t;
-	t.setX(0, 0);
-	t.setY(3, 0);
-	t.setZ(3, 3);
-	cout << "A=%f, P=%f, lateral=%i\n" << t.getArea() << endl << t.getPerimeter() << endl << t.isEquilateral() << endl;
 	return 0;
 }
 	
@@ -35,12 +31,12 @@ void Ellipse::setX(double x0, double x1)
 	x[1] = x1;
 }
 
-void Ellipse::setA(double y0);
+void Ellipse::setA(double y0)
 {
 	a = y0;
 }
 
-void Ellipse::setB(double z0);
+void Ellipse::setB(double z0)
 {
 	b = z0;
 }
@@ -63,6 +59,6 @@ bool Ellipse::isCircle()
 }
 bool Ellipse::isInside(double f, double s)
 {
-	if(pow((f-x[0])/a, 2) pow((s-x[1])/b, 2) <= 1) return 1;
+	if(pow((f-x[0])/a, 2) + pow((s-x[1])/b, 2) <= 1) return 1;
 	else return 0;
 }
