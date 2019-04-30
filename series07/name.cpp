@@ -64,7 +64,18 @@ void Name::setName(char* u)
 
 void Name::printName()
 {
-	char u[strlen(name)];
+	char u[strlen(first_name)];
 	int i=0;
-	while(name[i]!=' ')
+	while(first_name[i]!=' ')
+        {
+		cout << first_name[i];
+		i++;
+	}
+	cout << " " << first_name[i+2] << ". ";
+
+	for(i=0; i<strlen(first_name); i++)
+	{
+		cout << surname[i];
+	}
+          
 }
