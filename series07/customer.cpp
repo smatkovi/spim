@@ -18,6 +18,8 @@ class Customer
 	void setBalance(double);
 	void printBalance();
 	void setPin(int);
+	bool checkPin(int);
+	void drawMoney(double);
 };
 
 int main()
@@ -43,4 +45,15 @@ void Customer::printBalance()
 void Customer::setPin(int p)
 {
 	pin=p;
+}
+bool Customer::checkPin(int p)
+{
+	if(pin==p) return 1
+	else return 0;
+}
+void Customer::drawMoney(double m)
+{
+	assert(m>=0 && balance-m>=0);
+	balance-=m;
+	if(balance<10.) cout << "warning balance<10Eur";
 }
