@@ -36,7 +36,7 @@ void Customer::setCustomer(char* u)
 }
 void Customer::setBalance(double b)
 {
-	balabnce=b;
+	balance=b;
 }
 void Customer::printBalance()
 {
@@ -48,7 +48,7 @@ void Customer::setPin(int p)
 }
 bool Customer::checkPin(int p)
 {
-	if(pin==p) return 1
+	if(pin==p) return 1;
 	else return 0;
 }
 void Customer::drawMoney(double m)
