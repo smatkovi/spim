@@ -19,7 +19,7 @@ private:
 public:
 	// constructors and destructor
 	Matrix();
-	Matrix(int dim, double init = 0);
+	Matrix(int dim, double init = 0, char t);
 	~Matrix();
 
 	// return vector dimension

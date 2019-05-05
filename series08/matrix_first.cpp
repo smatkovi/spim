@@ -4,9 +4,10 @@ Matrix::Matrix()
 	dim = 0;
 	coeff = (double*) 0;
 	std::cout << "allocate empty matrix" << "\n";
+	type='F';
 }
 
-Matrix::Matrix(int dim, double init) 
+Matrix::Matrix(int dim, double init, char t) 
 {
 	assert(dim>0);
 	this->dim = dim;
@@ -19,6 +20,7 @@ Matrix::Matrix(int dim, double init)
 			coeff[j*i] = init;
 		}
 	}
+	type=t;
 	std::cout << "allocate matrix, length " << dim << "\n";
 }
 
