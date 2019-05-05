@@ -10,7 +10,7 @@ Matrix::Matrix(int dim, double init)
 {
 	assert(dim>0);
 	this->dim = dim;
-	coeff = (double*) malloc(dim*sizeof(double) * dim*sizeof(double) + 1);
+	coeff = (double*) malloc(dim * dim*sizeof(double) + 1);
 	assert(coeff != (double*) 0);
 	for (int j=1; j<=dim; ++j) 
 	{
@@ -26,7 +26,7 @@ Matrix::Matrix(int dim, double init)
 {
 	assert(dim>0);
 	this->dim = dim;
-	coeff = (double*) malloc(dim*sizeof(double) * dim*sizeof(double) + 1);
+	coeff = (double*) malloc(dim * dim*sizeof(double) + 1);
 	assert(coeff != (double*) 0);
 	for (int j=1; j<=dim; ++j) 
 	{
