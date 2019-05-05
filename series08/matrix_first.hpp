@@ -26,8 +26,8 @@ public:
 	int size();
 
 	// read and write vector coefficients
-	void set(int k, double value);
-	double get(int k);
+	void set(int k, int l, double value);
+	double get(int k, int l);
 
 	// compute Euclidean norm
 	////////////////double norm();
