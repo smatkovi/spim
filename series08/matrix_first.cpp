@@ -7,17 +7,72 @@ Matrix::Matrix()
 	type='F';
 }
 
+Matrix::Matrix(int dim, char t) 
+{
+	assert(dim>0);
+	this->dim = dim;
+	int c=1;
+	if(t == 'F')
+	{
+		coeff = (double*) malloc(dim * dim*sizeof(double) + sizeof(double));
+		assert(coeff != (double*) 0);
+		for (int j=1; j<=dim; ++j) 
+		{
+			for (int i=1; i<=dim; ++i) 
+			{
+				coeff[j*i] = 0;
+			}
+		}
+	}
+	else
+	{
+		coeff = (double*) malloc(dim*(dim+1)/2*sizeof(double) + sizeof(double));
+		for(int j=1; j<=dim; j++)
+		{
+			for(int i=1; i<=dim; i++)
+			{
+				if(i>=j)
+				{
+					coeff(c) = 0;
+					c++;
+				}
+			}
+		}
+	}
+	type=t;
+	std::cout << "allocate matrix, length " << dim << "\n";
+}
+
 Matrix::Matrix(int dim, double init, char t) 
 {
 	assert(dim>0);
 	this->dim = dim;
-	coeff = (double*) malloc(dim * dim*sizeof(double) + 1);
-	assert(coeff != (double*) 0);
-	for (int j=1; j<=dim; ++j) 
+	int c=1;
+	if(t == 'F')
 	{
-		for (int i=1; i<=dim; ++i) 
+		coeff = (double*) malloc(dim * dim*sizeof(double) + sizeof(double));
+		assert(coeff != (double*) 0);
+		for (int j=1; j<=dim; ++j) 
 		{
-			coeff[j*i] = init;
+			for (int i=1; i<=dim; ++i) 
+			{
+				coeff[j*i] = init;
+			}
+		}
+	}
+	else
+	{
+		coeff = (double*) malloc(dim*(dim+1)/2*sizeof(double) + sizeof(double));
+		for(int j=1; j<=dim; j++)
+		{
+			for(int i=1; i<=dim; i++)
+			{
+				if(i>=j)
+				{
+					coeff(c) = init;
+					c++;
+				}
+			}
 		}
 	}
 	type=t;
