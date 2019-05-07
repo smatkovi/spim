@@ -160,3 +160,49 @@ double Matrix::get(int k, int l)
 	
 }
 */
+void Matrix::scanMatrix(int n, char t)
+{
+	double value;
+	if(t=='F')
+	{
+		for(int k=1; k<=n; k++)
+		{
+			for(int l=1; l<=n; l++)
+			{
+				cout << "enter value for row " << k << ", column" << l << endl;
+				coeff[k*l] = value;
+			}
+		}
+	}
+	else
+	{
+		if(t=='U')
+		{
+			for(int k=1; k<=n; k++)
+			{
+				for(int l=1; l<=n; l++)
+				{
+					if(l>=k)
+					{
+						cout << "enter value for row " << k << ", column" << l << endl;
+						coeff[k*l - k*(k-1)/2] = value;
+					}
+				}
+			}
+		}
+		else
+		{
+			for(int k=1; k<=n; k++)
+			{
+				for(int l=1; l<=n; l++)
+				{
+					if(l<=k)
+					{
+						cout << "enter value for row " << k << ", column" << l << endl;
+						coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2] = value;
+					}
+				}
+			}
+		}
+	}
+}
