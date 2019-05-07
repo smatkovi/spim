@@ -20,6 +20,7 @@ public:
 	// constructors and destructor
 	Matrix();
 	Matrix(int dim, double init, char t);
+	Matrix(int dim, double init);
 	Matrix(int dim, char t);
 	~Matrix();
 
