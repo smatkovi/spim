@@ -112,13 +112,40 @@ int Matrix::size()
 void Matrix::set(int k, int l, double value) 
 {
 	assert(k>=0 && k*l<dim-1 && l>=0);
-	coeff[k*l] = value;
+	if(type=='F') coeff[k*l] = value;
+	else
+	{
+		if(type=='U')
+		{
+			assert(k<=l);
+			coeff(k*l - k*(k-1)/2) = value;
+		}
+		else
+		{
+			assert(k>=l);
+			coeff(k*l - dim*(dim-1)/2 + l*(l-1)/2) = value;
+		}
+	}
 }
 
 double Matrix::get(int k, int l) 
 {
 	assert(k>=0 && k*l<dim-1 && l>=0);
 	return coeff[k*l];
+	if(type=='F') return coeff[k*l];
+	else
+	{
+		if(type=='U')
+		{
+			assert(k<=l);
+			return coeff(k*l - k*(k-1)/2);
+		}
+		else
+		{
+			assert(k>=l);
+			return coeff(k*l - dim*(dim-1)/2 + l*(l-1)/2);
+		}
+	}
 }
 
 /*double Matrix::norm() 
