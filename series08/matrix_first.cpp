@@ -33,7 +33,7 @@ Matrix::Matrix(int dim, char t)
 			{
 				if(i>=j)
 				{
-					coeff(c) = 0;
+					coeff[c] = 0;
 					c++;
 				}
 			}
@@ -69,7 +69,7 @@ Matrix::Matrix(int dim, double init, char t)
 			{
 				if(i>=j)
 				{
-					coeff(c) = init;
+					coeff[c] = init;
 					c++;
 				}
 			}
@@ -118,12 +118,12 @@ void Matrix::set(int k, int l, double value)
 		if(type=='U')
 		{
 			assert(k<=l);
-			coeff(k*l - k*(k-1)/2) = value;
+			coeff[k*l - k*(k-1)/2] = value;
 		}
 		else
 		{
 			assert(k>=l);
-			coeff(k*l - dim*(dim-1)/2 + l*(l-1)/2) = value;
+			coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2] = value;
 		}
 	}
 }
@@ -138,12 +138,12 @@ double Matrix::get(int k, int l)
 		if(type=='U')
 		{
 			assert(k<=l);
-			return coeff(k*l - k*(k-1)/2);
+			return coeff[k*l - k*(k-1)/2];
 		}
 		else
 		{
 			assert(k>=l);
-			return coeff(k*l - dim*(dim-1)/2 + l*(l-1)/2);
+			return coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2];
 		}
 	}
 }
