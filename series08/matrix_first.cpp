@@ -170,6 +170,7 @@ void Matrix::scanMatrix(int n, char t)
 			for(int l=1; l<=n; l++)
 			{
 				cout << "enter value for row " << k << ", column" << l << endl;
+				cin >> value;
 				coeff[k*l] = value;
 			}
 		}
@@ -185,6 +186,7 @@ void Matrix::scanMatrix(int n, char t)
 					if(l>=k)
 					{
 						cout << "enter value for row " << k << ", column" << l << endl;
+						cin >> value;
 						coeff[k*l - k*(k-1)/2] = value;
 					}
 				}
@@ -199,6 +201,7 @@ void Matrix::scanMatrix(int n, char t)
 					if(l<=k)
 					{
 						cout << "enter value for row " << k << ", column" << l << endl;
+						cin >> value;
 						coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2] = value;
 					}
 				}
@@ -208,7 +211,6 @@ void Matrix::scanMatrix(int n, char t)
 }
 void Matrix::printMatrix()
 {
-	double value;
 	if(type=='F')
 	{
 		for(int k=1; k<=dim; k++)
@@ -253,17 +255,20 @@ void Matrix::printMatrix()
 		}
 	}
 }
-void Matrix::columnSumNorm()//Implement this
+void Matrix::rowSumNorm()
 {
-	double value;
+	double v=0;
+	double m=0;
 	if(type=='F')
 	{
 		for(int k=1; k<=dim; k++)
 		{
 			for(int l=1; l<=dim; l++)
 			{
-				cout << coeff[k*l];
+				 v += fabs(coeff[k*l]);
 			}
+			if(v>m) m=v;
+			v=0;
 		}
 	}
 	else
@@ -276,11 +281,11 @@ void Matrix::columnSumNorm()//Implement this
 				{
 					if(l>=k)
 					{
-						cout << coeff[k*l - k*(k-1)/2] << " ";
+						v += fabs(coeff[k*l - k*(k-1)/2]);
 					}
-					else cout << "0 ";
+					if(v>m) m=v;
+					v=0;
 				}
-				cout << endl;
 			}
 		}
 		else
@@ -291,12 +296,64 @@ void Matrix::columnSumNorm()//Implement this
 				{
 					if(l<=k)
 					{
-						cout << coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2] << " ";
+						v += fabs(coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2]);
 					}
-					else cout << "0 ";
+					if(v>m) m=v;
+					v=0;
 				}
-				cout << endl;
 			}
 		}
 	}
+	return m;
+}
+void Matrix::columnSumNorm()
+{
+	double v=0;
+	double m=0;
+	if(type=='F')
+	{
+		for(int l=1; l<=dim; l++)
+		{
+			for(int k=1; k<=dim; k++)
+			{
+				 v += fabs(coeff[k*l]);
+			}
+			if(v>m) m=v;
+			v=0;
+		}
+	}
+	else
+	{
+		if(type=='U')
+		{
+			for(int l=1; l<=dim; l++)
+			{
+				for(int k=1; k<=dim; k++)
+				{
+					if(l>=k)
+					{
+						v += fabs(coeff[k*l - k*(k-1)/2]);
+					}
+					if(v>m) m=v;
+					v=0;
+				}
+			}
+		}
+		else
+		{
+			for(int l=1; l<=dim; l++)
+			{
+				for(int k=1; k<=dim; k++)
+				{
+					if(l<=k)
+					{
+						v += fabs(coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2]);
+					}
+					if(v>m) m=v;
+					v=0;
+				}
+			}
+		}
+	}
+	return m;
 }
