@@ -206,3 +206,50 @@ void Matrix::scanMatrix(int n, char t)
 		}
 	}
 }
+void Matrix::printMatrix()
+{
+	double value;
+	if(t=='F')
+	{
+		for(int k=1; k<=n; k++)
+		{
+			for(int l=1; l<=n; l++)
+			{
+				cout << coeff[k*l];
+			}
+		}
+	}
+	else
+	{
+		if(t=='U')
+		{
+			for(int k=1; k<=n; k++)
+			{
+				for(int l=1; l<=n; l++)
+				{
+					if(l>=k)
+					{
+						cout << coeff[k*l - k*(k-1)/2] << " ";
+					}
+					else cout << "0 ";
+				}
+				cout << endl;
+			}
+		}
+		else
+		{
+			for(int k=1; k<=n; k++)
+			{
+				for(int l=1; l<=n; l++)
+				{
+					if(l<=k)
+					{
+						cout << coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2] << " ";
+					}
+					else cout << "0 ";
+				}
+				cout << endl;
+			}
+		}
+	}
+}

@@ -31,6 +31,7 @@ public:
 	void set(int k, int l, double value);
 	double get(int k, int l);
 	void scanMatrix(int n, char t);	
+	void printMatrix();	
 
 	// compute Euclidean norm
 	////////////////double norm();
