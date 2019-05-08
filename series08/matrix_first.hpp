@@ -37,6 +37,7 @@ public:
 	void printMatrix();	
 	double rowSumNorm()
 	double columnSumNorm()
+	double frobeniusNorm()
 
 	// compute Euclidean norm
 	////////////////double norm();

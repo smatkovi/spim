@@ -357,3 +357,46 @@ void Matrix::columnSumNorm()
 	}
 	return m;
 }
+void Matrix::frobeniusNorm()
+{
+	double v=0;
+	if(type=='F')
+	{
+		for(int k=1; k<=dim; k++)
+		{
+			for(int l=1; l<=dim; l++)
+			{
+				 v += fabs(coeff[k*l]);
+			}
+		}
+	}
+	else
+	{
+		if(type=='U')
+		{
+			for(int k=1; k<=dim; k++)
+			{
+				for(int l=1; l<=dim; l++)
+				{
+					if(l>=k)
+					{
+						v += fabs(coeff[k*l - k*(k-1)/2]);
+					}
+				}
+			}
+		}
+		else
+		{
+			for(int k=1; k<=dim; k++)
+			{
+				for(int l=1; l<=dim; l++)
+				{
+					if(l<=k)
+					{
+						v += fabs(coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2]);
+					}
+				}
+			}
+		}
+	}
+	return sqrt(v);
