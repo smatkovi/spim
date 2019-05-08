@@ -34,6 +34,7 @@ public:
 	double get(int k, int l);
 	void scanMatrix(int n, char t);	
 	void printMatrix();	
+	double columnSumNorm()
 
 	// compute Euclidean norm
 	////////////////double norm();
