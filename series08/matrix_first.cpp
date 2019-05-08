@@ -450,3 +450,42 @@ double Matrix::trace()
 	}
 	return v;
 }
+
+bool Matrix::isDiagonal()
+{
+	bool d=1;
+	if(type=='F')
+	{
+		for(int k=1; k<=dim; k++)
+		{
+			for(int l=1; l<=dim; l++)
+			{
+				 if(k!=l && coeff[k*l]!=0) d=0;
+			}
+		}
+	}
+	else
+	{
+		if(type=='U')
+		{
+			for(int k=1; k<=dim; k++)
+			{
+				for(int l=1; l<=dim; l++)
+				{
+					if(l!=k && coeff[k*l - k*(k-1)/2]!=0) d=0;
+				}
+			}
+		}
+		else
+		{
+			for(int k=1; k<=dim; k++)
+			{
+				for(int l=1; l<=dim; l++)
+				{
+					if(l!=k && coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2]!=0) d=0;
+				}
+			}
+		}
+	}
+	return d;
+}

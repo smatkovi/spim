@@ -40,6 +40,7 @@ public:
 	double columnSumNorm();
 	double frobeniusNorm();
 	double trace();
+	bool isDiagonal();
 
 	// compute Euclidean norm
 	////////////////double norm();
