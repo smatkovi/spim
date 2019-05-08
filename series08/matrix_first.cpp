@@ -209,6 +209,7 @@ void Matrix::scanMatrix(int n, char t)
 		}
 	}
 }
+
 void Matrix::printMatrix()
 {
 	if(type=='F')
@@ -255,6 +256,7 @@ void Matrix::printMatrix()
 		}
 	}
 }
+
 double Matrix::rowSumNorm()
 {
 	double v=0;
@@ -306,6 +308,7 @@ double Matrix::rowSumNorm()
 	}
 	return m;
 }
+
 double Matrix::columnSumNorm()
 {
 	double v=0;
@@ -357,6 +360,7 @@ double Matrix::columnSumNorm()
 	}
 	return m;
 }
+
 double Matrix::frobeniusNorm()
 {
 	double v=0;
@@ -400,4 +404,49 @@ double Matrix::frobeniusNorm()
 		}
 	}
 	return sqrt(v);
+}
+
+double Matrix::trace()
+{
+	double v=0;
+	if(type=='F')
+	{
+		for(int k=1; k<=dim; k++)
+		{
+			for(int l=1; l<=dim; l++)
+			{
+				 if(k==l) v += coeff[k*l];
+			}
+		}
+	}
+	else
+	{
+		if(type=='U')
+		{
+			for(int k=1; k<=dim; k++)
+			{
+				for(int l=1; l<=dim; l++)
+				{
+					if(l==k)
+					{
+						v += coeff[k*l - k*(k-1)/2];
+					}
+				}
+			}
+		}
+		else
+		{
+			for(int k=1; k<=dim; k++)
+			{
+				for(int l=1; l<=dim; l++)
+				{
+					if(l==k)
+					{
+						v += coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2];
+					}
+				}
+			}
+		}
+	}
+	return v;
 }

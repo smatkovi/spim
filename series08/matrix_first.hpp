@@ -39,6 +39,7 @@ public:
 	double rowSumNorm();
 	double columnSumNorm();
 	double frobeniusNorm();
+	double trace();
 
 	// compute Euclidean norm
 	////////////////double norm();
