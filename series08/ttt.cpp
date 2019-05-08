@@ -4,5 +4,7 @@ using std::cout;
 
 int main() 
 {
+	Matrix g(3, 'F');
+	g.printMatrix();
 	return 0;
 }

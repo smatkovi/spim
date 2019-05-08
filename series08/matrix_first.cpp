@@ -14,7 +14,7 @@ Matrix::Matrix(int dim, char t)
 	int c=1;
 	if(t == 'F')
 	{
-		coeff = (double*) malloc(dim * dim*sizeof(double) + sizeof(double));
+		coeff = (double*) malloc(dim * dim*sizeof(double));
 		assert(coeff != (double*) 0);
 		for (int j=1; j<=dim; ++j) 
 		{
@@ -219,8 +219,9 @@ void Matrix::printMatrix()
 		{
 			for(int l=0; l<dim; l++)
 			{
-				cout << coeff[k*dim+l];
+				cout << coeff[k*dim+l] << " ";
 			}
+			cout << endl;
 		}
 	}
 	else
