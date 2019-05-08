@@ -6,6 +6,8 @@
 #include<cassert>
 #include<iostream>
 
+using std::cout;
+using std::endl;
 // The class Matrix stores vectors in Rd
 
 class Matrix 

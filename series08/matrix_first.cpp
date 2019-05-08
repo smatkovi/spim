@@ -209,11 +209,11 @@ void Matrix::scanMatrix(int n, char t)
 void Matrix::printMatrix()
 {
 	double value;
-	if(t=='F')
+	if(type=='F')
 	{
-		for(int k=1; k<=n; k++)
+		for(int k=1; k<=dim; k++)
 		{
-			for(int l=1; l<=n; l++)
+			for(int l=1; l<=dim; l++)
 			{
 				cout << coeff[k*l];
 			}
@@ -221,11 +221,11 @@ void Matrix::printMatrix()
 	}
 	else
 	{
-		if(t=='U')
+		if(type=='U')
 		{
-			for(int k=1; k<=n; k++)
+			for(int k=1; k<=dim; k++)
 			{
-				for(int l=1; l<=n; l++)
+				for(int l=1; l<=dim; l++)
 				{
 					if(l>=k)
 					{
@@ -238,9 +238,9 @@ void Matrix::printMatrix()
 		}
 		else
 		{
-			for(int k=1; k<=n; k++)
+			for(int k=1; k<=dim; k++)
 			{
-				for(int l=1; l<=n; l++)
+				for(int l=1; l<=dim; l++)
 				{
 					if(l<=k)
 					{
