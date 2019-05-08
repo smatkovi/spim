@@ -111,39 +111,39 @@ int Matrix::size()
 
 void Matrix::set(int k, int l, double value) 
 {
-	assert(k>=0 && k*l<dim-1 && l>=0);
-	if(type=='F') coeff[k*l] = value;
+	assert(k>=0 && k*dim+l<dim-1 && l>=0);
+	if(type=='F') coeff[k*dim+l] = value;
 	else
 	{
 		if(type=='U')
 		{
 			assert(k<=l);
-			coeff[k*l - k*(k-1)/2] = value;
+			coeff[k*dim+l - k*(k+1)/2] = value;
 		}
 		else
 		{
 			assert(k>=l);
-			coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2] = value;
+			coeff[k*dim+l - k*(2*dim + k)/2] = value;
 		}
 	}
 }
 
 double Matrix::get(int k, int l) 
 {
-	assert(k>=0 && k*l<dim-1 && l>=0);
-	return coeff[k*l];
-	if(type=='F') return coeff[k*l];
+	assert(k>=0 && k*dim+l<dim-1 && l>=0);
+	return coeff[k*dim+l];
+	if(type=='F') return coeff[k*dim+l];
 	else
 	{
 		if(type=='U')
 		{
 			assert(k<=l);
-			return coeff[k*l - k*(k-1)/2];
+			return coeff[k*dim+l - k*(k+1)/2];
 		}
 		else
 		{
 			assert(k>=l);
-			return coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2];
+			return coeff[k*dim+l - k*(2*dim + k)/2];
 		}
 	}
 }
@@ -165,13 +165,13 @@ void Matrix::scanMatrix(int n, char t)
 	double value;
 	if(t=='F')
 	{
-		for(int k=1; k<=n; k++)
+		for(int k=0; k<=n; k++)
 		{
-			for(int l=1; l<=n; l++)
+			for(int l=0; l<=n; l++)
 			{
 				cout << "enter value for row " << k << ", column" << l << endl;
 				cin >> value;
-				coeff[k*l] = value;
+				coeff[k*dim+l] = value;
 			}
 		}
 	}
@@ -179,30 +179,30 @@ void Matrix::scanMatrix(int n, char t)
 	{
 		if(t=='U')
 		{
-			for(int k=1; k<=n; k++)
+			for(int k=0; k<=n; k++)
 			{
-				for(int l=1; l<=n; l++)
+				for(int l=0; l<=n; l++)
 				{
 					if(l>=k)
 					{
 						cout << "enter value for row " << k << ", column" << l << endl;
 						cin >> value;
-						coeff[k*l - k*(k-1)/2] = value;
+						coeff[k*dim+l - k*(k+1)/2] = value;
 					}
 				}
 			}
 		}
 		else
 		{
-			for(int k=1; k<=n; k++)
+			for(int k=0; k<=n; k++)
 			{
-				for(int l=1; l<=n; l++)
+				for(int l=0; l<=n; l++)
 				{
 					if(l<=k)
 					{
 						cout << "enter value for row " << k << ", column" << l << endl;
 						cin >> value;
-						coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2] = value;
+						coeff[k*dim+l - k*(2*dim + k)/2] = value;
 					}
 				}
 			}
@@ -214,11 +214,11 @@ void Matrix::printMatrix()
 {
 	if(type=='F')
 	{
-		for(int k=1; k<=dim; k++)
+		for(int k=0; k<dim; k++)
 		{
-			for(int l=1; l<=dim; l++)
+			for(int l=0; l<dim; l++)
 			{
-				cout << coeff[k*l];
+				cout << coeff[k*dim+l];
 			}
 		}
 	}
@@ -226,13 +226,13 @@ void Matrix::printMatrix()
 	{
 		if(type=='U')
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
 					if(l>=k)
 					{
-						cout << coeff[k*l - k*(k-1)/2] << " ";
+						cout << coeff[k*dim+l - k*(k+1)/2] << " ";
 					}
 					else cout << "0 ";
 				}
@@ -241,13 +241,13 @@ void Matrix::printMatrix()
 		}
 		else
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
 					if(l<=k)
 					{
-						cout << coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2] << " ";
+						cout << coeff[k*dim+l - k*(2*dim + k)/2] << " ";
 					}
 					else cout << "0 ";
 				}
@@ -263,11 +263,11 @@ double Matrix::rowSumNorm()
 	double m=0;
 	if(type=='F')
 	{
-		for(int k=1; k<=dim; k++)
+		for(int k=0; k<dim; k++)
 		{
-			for(int l=1; l<=dim; l++)
+			for(int l=0; l<dim; l++)
 			{
-				 v += fabs(coeff[k*l]);
+				 v += fabs(coeff[k*dim+l]);
 			}
 			if(v>m) m=v;
 			v=0;
@@ -277,13 +277,13 @@ double Matrix::rowSumNorm()
 	{
 		if(type=='U')
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
 					if(l>=k)
 					{
-						v += fabs(coeff[k*l - k*(k-1)/2]);
+						v += fabs(coeff[k*dim+l - k*(k+1)/2]);
 					}
 					if(v>m) m=v;
 					v=0;
@@ -292,13 +292,13 @@ double Matrix::rowSumNorm()
 		}
 		else
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
 					if(l<=k)
 					{
-						v += fabs(coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2]);
+						v += fabs(coeff[k*dim+l - k*(2*dim + k)/2]);
 					}
 					if(v>m) m=v;
 					v=0;
@@ -315,11 +315,11 @@ double Matrix::columnSumNorm()
 	double m=0;
 	if(type=='F')
 	{
-		for(int l=1; l<=dim; l++)
+		for(int l=0; l<dim; l++)
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				 v += fabs(coeff[k*l]);
+				 v += fabs(coeff[k*dim+l]);
 			}
 			if(v>m) m=v;
 			v=0;
@@ -329,13 +329,13 @@ double Matrix::columnSumNorm()
 	{
 		if(type=='U')
 		{
-			for(int l=1; l<=dim; l++)
+			for(int l=0; l<dim; l++)
 			{
-				for(int k=1; k<=dim; k++)
+				for(int k=0; k<dim; k++)
 				{
 					if(l>=k)
 					{
-						v += fabs(coeff[k*l - k*(k-1)/2]);
+						v += fabs(coeff[k*dim+l - k*(k+1)/2]);
 					}
 					if(v>m) m=v;
 					v=0;
@@ -344,13 +344,13 @@ double Matrix::columnSumNorm()
 		}
 		else
 		{
-			for(int l=1; l<=dim; l++)
+			for(int l=0; l<dim; l++)
 			{
-				for(int k=1; k<=dim; k++)
+				for(int k=0; k<dim; k++)
 				{
 					if(l<=k)
 					{
-						v += fabs(coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2]);
+						v += fabs(coeff[k*dim+l - k*(2*dim + k)/2]);
 					}
 					if(v>m) m=v;
 					v=0;
@@ -366,11 +366,11 @@ double Matrix::frobeniusNorm()
 	double v=0;
 	if(type=='F')
 	{
-		for(int k=1; k<=dim; k++)
+		for(int k=0; k<dim; k++)
 		{
-			for(int l=1; l<=dim; l++)
+			for(int l=0; l<dim; l++)
 			{
-				 v += fabs(coeff[k*l]);
+				 v += fabs(coeff[k*dim+l]);
 			}
 		}
 	}
@@ -378,26 +378,26 @@ double Matrix::frobeniusNorm()
 	{
 		if(type=='U')
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
 					if(l>=k)
 					{
-						v += fabs(coeff[k*l - k*(k-1)/2]);
+						v += fabs(coeff[k*dim+l - k*(k+1)/2]);
 					}
 				}
 			}
 		}
 		else
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
 					if(l<=k)
 					{
-						v += fabs(coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2]);
+						v += fabs(coeff[k*dim+l - k*(2*dim + k)/2]);
 					}
 				}
 			}
@@ -411,11 +411,11 @@ double Matrix::trace()
 	double v=0;
 	if(type=='F')
 	{
-		for(int k=1; k<=dim; k++)
+		for(int k=0; k<dim; k++)
 		{
-			for(int l=1; l<=dim; l++)
+			for(int l=0; l<dim; l++)
 			{
-				 if(k==l) v += coeff[k*l];
+				 if(k==l) v += coeff[k*dim+l];
 			}
 		}
 	}
@@ -423,26 +423,26 @@ double Matrix::trace()
 	{
 		if(type=='U')
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
 					if(l==k)
 					{
-						v += coeff[k*l - k*(k-1)/2];
+						v += coeff[k*dim+l - k*(k+1)/2];
 					}
 				}
 			}
 		}
 		else
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
 					if(l==k)
 					{
-						v += coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2];
+						v += coeff[k*dim+l - k*(2*dim + k)/2];
 					}
 				}
 			}
@@ -456,11 +456,15 @@ bool Matrix::isDiagonal()
 	bool d=1;
 	if(type=='F')
 	{
-		for(int k=1; k<=dim; k++)
+		for(int k=0; k<dim; k++)
 		{
-			for(int l=1; l<=dim; l++)
+			for(int l=0; l<dim; l++)
 			{
-				 if(k!=l && coeff[k*l]!=0) d=0;
+				 if(k!=l && coeff[k*dim+l]!=0)
+				 {
+					 d=0;
+					 k=dim;
+				 }
 			}
 		}
 	}
@@ -468,21 +472,98 @@ bool Matrix::isDiagonal()
 	{
 		if(type=='U')
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
-					if(l!=k && coeff[k*l - k*(k-1)/2]!=0) d=0;
+					if(l!=k && coeff[k*dim+l - k*(k+1)/2]!=0)
+					{
+						d=0;
+						k=dim;
+					}
 				}
 			}
 		}
 		else
 		{
-			for(int k=1; k<=dim; k++)
+			for(int k=0; k<dim; k++)
 			{
-				for(int l=1; l<=dim; l++)
+				for(int l=0; l<dim; l++)
 				{
-					if(l!=k && coeff[k*l - dim*(dim-1)/2 + l*(l-1)/2]!=0) d=0;
+					if(l!=k && coeff[k*dim+l - k*(2*dim + k)/2]!=0)
+					{
+						d=0;
+						k=dim;
+						l=dim;
+					}
+				}
+			}
+		}
+	}
+	return d;
+}
+
+bool Matrix::isSymmetric()
+{
+	bool d=1;
+	if(type=='F')
+	{
+		for(int k=0; k<=dim/2; k++)
+		{
+			for(int l=0; l<dim; l++)
+			{
+				 if(coeff[k*dim+l] != coeff[l*dim+k])
+					{
+						d=0;
+						k=dim;
+						l=dim;
+					}
+			}
+		}
+	}
+	else
+	{
+		if(type=='U')
+		{
+			if( !this->isDiagonal() ) d=0;
+		}
+		else
+		{
+			if( !this->isDiagonal() ) d=0;
+		}
+	}
+	return d;
+}
+
+bool Matrix::isSkewSymmetric()
+{
+	bool d=1;
+	if(type=='F')
+	{
+		for(int k=0; k<=dim/2; k++)
+		{
+			for(int l=0; l<dim; l++)
+			{
+				 if(coeff[k*dim+l] != -coeff[l*dim+k])
+					{
+						d=0;
+						k=dim;
+						l=dim;
+					}
+			}
+		}
+	}
+	else
+	{
+		if( !this->isDiagonal() ) d=0;
+		else
+		{
+			for(int i=0; i < dim*(dim+1)/2; i++)
+			{
+				if(coeff[i]!=0)
+				{
+					d=0;
+					i = dim*(dim+1)/2;
 				}
 			}
 		}

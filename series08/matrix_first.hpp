@@ -41,6 +41,8 @@ public:
 	double frobeniusNorm();
 	double trace();
 	bool isDiagonal();
+	bool isSymmetric();
+	bool isSkewSymmetric();
 
 	// compute Euclidean norm
 	////////////////double norm();
