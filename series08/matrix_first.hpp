@@ -7,6 +7,7 @@
 #include<iostream>
 
 using std::cout;
+using std::cin;
 using std::endl;
 using std::fabs;
 // The class Matrix stores vectors in Rd
@@ -35,9 +36,9 @@ public:
 	double get(int k, int l);
 	void scanMatrix(int n, char t);	
 	void printMatrix();	
-	double rowSumNorm()
-	double columnSumNorm()
-	double frobeniusNorm()
+	double rowSumNorm();
+	double columnSumNorm();
+	double frobeniusNorm();
 
 	// compute Euclidean norm
 	////////////////double norm();

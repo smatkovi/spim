@@ -255,7 +255,7 @@ void Matrix::printMatrix()
 		}
 	}
 }
-void Matrix::rowSumNorm()
+double Matrix::rowSumNorm()
 {
 	double v=0;
 	double m=0;
@@ -306,7 +306,7 @@ void Matrix::rowSumNorm()
 	}
 	return m;
 }
-void Matrix::columnSumNorm()
+double Matrix::columnSumNorm()
 {
 	double v=0;
 	double m=0;
@@ -357,7 +357,7 @@ void Matrix::columnSumNorm()
 	}
 	return m;
 }
-void Matrix::frobeniusNorm()
+double Matrix::frobeniusNorm()
 {
 	double v=0;
 	if(type=='F')
@@ -400,3 +400,4 @@ void Matrix::frobeniusNorm()
 		}
 	}
 	return sqrt(v);
+}
