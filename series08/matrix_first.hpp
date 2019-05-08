@@ -2,6 +2,7 @@
 #define _MATRIX_FIRST_
 
 #include<cmath>
+#include<ctime>
 #include<cstdlib>
 #include<cassert>
 #include<iostream>
@@ -26,6 +27,7 @@ public:
 	Matrix(int dim, double init, char t);
 	Matrix(int dim, double init);
 	Matrix(int dim, char t);
+	Matrix(int dim, char t, double lo, double up);
 	~Matrix();
 
 	// return vector dimension
