@@ -1,8 +1,9 @@
+all: main ttt
 main: main.o matrix_first.o
 	g++ -std=c++0x -Wall main.o matrix_first.o -o main
 
 ttt: ttt.o matrix_first.o
-	g++ -std=c++0x -Wall -g3 -fsanitize=address main.o matrix_first.o -o ttt
+	g++ -std=c++0x -Wall -g3 -fsanitize=address ttt.o matrix_first.o -o ttt
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -16,4 +17,3 @@ matrix_first.o: matrix_first.cpp matrix_first.hpp
 clean:
 	rm *.o ttt main
 
-all: main ttt
