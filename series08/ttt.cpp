@@ -35,6 +35,7 @@ int main()
 			state = 0;
 			done=1;
 		}
+		g.printMatrix();
 
 		while(done != 1)
 		{
@@ -81,7 +82,7 @@ int main()
 			state =0;
 			cout << g.get(2, 0) << " won" << endl;
 		}
-		g.printMatrix();
+		if(state==1) g.printMatrix();
 
 	}
 	return 0;

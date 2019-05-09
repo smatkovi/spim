@@ -1,13 +1,19 @@
-SRC_DIR := .../src
-OBJ_DIR := .../obj
-SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
-OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
-LDFLAGS := ...
-CPPFLAGS := ...
-CXXFLAGS := ...
+main: main.o matrix_first.o
+	g++ -std=c++0x -Wall main.o matrix_first.o -o main
 
-main: $(OBJ_FILES)
-	g++ $(LDFLAGS) -o $@ $^
+ttt: ttt.o matrix_first.o
+	g++ -std=c++0x -Wall -g3 -fsanitize=address main.o matrix_first.o -o ttt
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	g++ $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+main.o: main.cpp
+	g++ -c main.cpp
+
+ttt.o: ttt.cpp
+	g++ -c ttt.cpp
+
+matrix_first.o: matrix_first.cpp matrix_first.hpp
+	g++ -c matrix_first.cpp
+
+clean:
+	rm *.o ttt main
+
+all: main ttt
