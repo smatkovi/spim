@@ -16,9 +16,9 @@ Matrix::Matrix(int dim, char t)
 	{
 		coeff = (double*) malloc(dim * dim*sizeof(double));
 		assert(coeff != (double*) 0);
-		for (int j=1; j<=dim; ++j) 
+		for (int j=0; j<dim; ++j) 
 		{
-			for (int i=1; i<=dim; ++i) 
+			for (int i=0; i<dim; ++i) 
 			{
 				coeff[dim*j + i] = 0;
 			}
@@ -27,9 +27,9 @@ Matrix::Matrix(int dim, char t)
 	else
 	{
 		coeff = (double*) malloc(dim*(dim+1)/2*sizeof(double) + sizeof(double));
-		for(int j=1; j<=dim; j++)
+		for(int j=0; j<dim; j++)
 		{
-			for(int i=1; i<=dim; i++)
+			for(int i=0; i<dim; i++)
 			{
 				if(i>=j)
 				{
@@ -52,9 +52,9 @@ Matrix::Matrix(int dim, double init, char t)
 	{
 		coeff = (double*) malloc(dim * dim*sizeof(double) + sizeof(double));
 		assert(coeff != (double*) 0);
-		for (int j=1; j<=dim; ++j) 
+		for (int j=0; j<dim; ++j) 
 		{
-			for (int i=1; i<=dim; ++i) 
+			for (int i=0; i<dim; ++i) 
 			{
 				coeff[dim*j + i] = init;
 			}
@@ -63,9 +63,9 @@ Matrix::Matrix(int dim, double init, char t)
 	else
 	{
 		coeff = (double*) malloc(dim*(dim+1)/2*sizeof(double) + sizeof(double));
-		for(int j=1; j<=dim; j++)
+		for(int j=0; j<dim; j++)
 		{
-			for(int i=1; i<=dim; i++)
+			for(int i=0; i<dim; i++)
 			{
 				if(i>=j)
 				{
@@ -86,9 +86,9 @@ Matrix::Matrix(int dim, double init)
 	this->dim = dim;
 	coeff = (double*) malloc(dim * dim*sizeof(double) + 1);
 	assert(coeff != (double*) 0);
-	for (int j=1; j<=dim; ++j) 
+	for (int j=0; j<dim; ++j) 
 	{
-		for (int i=1; i<=dim; ++i) 
+		for (int i=0; i<dim; ++i) 
 		coeff[dim*j + i] = init;
 	}
 	std::cout << "allocate matrix, length " << dim << "\n";
@@ -112,7 +112,7 @@ int Matrix::size()
 
 void Matrix::set(int k, int l, double value) 
 {
-	assert(k>=0 && k*dim+l<dim-1 && l>=0);
+	assert(k>=0 && l<dim && k<dim && l>=0);
 	if(type=='F') coeff[k*dim+l] = value;
 	else
 	{
@@ -131,7 +131,7 @@ void Matrix::set(int k, int l, double value)
 
 double Matrix::get(int k, int l) 
 {
-	assert(k>=0 && k*dim+l<dim-1 && l>=0);
+	assert(k>=0 && l<dim && k<dim && l>=0);
 	return coeff[k*dim+l];
 	if(type=='F') return coeff[k*dim+l];
 	else
@@ -510,7 +510,7 @@ bool Matrix::isSymmetric()
 	bool d=1;
 	if(type=='F')
 	{
-		for(int k=0; k<=dim/2; k++)
+		for(int k=0; k<dim/2; k++)
 		{
 			for(int l=0; l<dim; l++)
 			{
@@ -542,7 +542,7 @@ bool Matrix::isSkewSymmetric()
 	bool d=1;
 	if(type=='F')
 	{
-		for(int k=0; k<=dim/2; k++)
+		for(int k=0; k<dim/2; k++)
 		{
 			for(int l=0; l<dim; l++)
 			{
@@ -582,9 +582,9 @@ Matrix::Matrix(int dim, char t, double lo, double up)
 	{
 		coeff = (double*) malloc(dim * dim*sizeof(double) + sizeof(double));
 		assert(coeff != (double*) 0);
-		for (int j=1; j<=dim; ++j) 
+		for (int j=0; j<dim; ++j) 
 		{
-			for (int i=1; i<=dim; ++i) 
+			for (int i=0; i<dim; ++i) 
 			{
 				double rnd = (double)rand() / RAND_MAX;
 				coeff[dim*j + i] = rnd*(up-lo) + lo;
@@ -594,9 +594,9 @@ Matrix::Matrix(int dim, char t, double lo, double up)
 	else
 	{
 		coeff = (double*) malloc(dim*(dim+1)/2*sizeof(double) + sizeof(double));
-		for(int j=1; j<=dim; j++)
+		for(int j=0; j<dim; j++)
 		{
-			for(int i=1; i<=dim; i++)
+			for(int i=0; i<dim; i++)
 			{
 				if(i>=j)
 				{
